@@ -16,3 +16,13 @@
 ```
 
 訂閱連結只填喺自己嘅 Surge 配置入面，唔好寫入呢個 repo。
+
+## SNTPHostWatch.js
+
+守候（SNTP）配置監察：定時下載守候官網嘅 Surge 完整配置，比較 `[Host]` 入面嘅私有 DoH 設定。
+第一次執行會記錄目前內容並發通知；之後一有改變就發通知，提你同步自己嘅配置。
+
+```ini
+[Script]
+SNTP-HostWatch = type=cron,cronexp="0 */6 * * *",wake-system=1,timeout=30,script-path=https://raw.githubusercontent.com/aaronwai13/surge-scripts/main/SNTPHostWatch.js,argument="守候 Surge 完整配置連結"
+```
